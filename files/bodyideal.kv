@@ -1,0 +1,71 @@
+<MyLabel@MDLabel>:
+    halign: 'left'
+    font_size: self.height * 0.5
+    bold: True
+    
+<MyTextFieldRect@MDTextFieldRect>:
+    hint_text: 'Целое полож. число'
+    font_size: self.height * 0.5
+    text: self.text if self.text.isdigit() and self.text != '0' else ''
+    
+    
+MDGridLayout:
+    cols: 1
+    rows: 3
+    MDGridLayout:
+        cols: 2
+        rows: 8
+        padding: 10
+        spacing: 5
+        border: True
+
+        MyLabel:
+            text: 'Рост'
+        MyTextFieldRect:
+            id: rost
+
+        MyLabel:
+            text: 'h Голова'
+        MyTextFieldRect:
+            id: golova
+
+        MyLabel:
+            text: 'Шея'
+        MyTextFieldRect:
+            id: sheya
+
+        MyLabel:
+            text: 'Плечи'
+        MyTextFieldRect:
+            id: plechi
+
+        MyLabel:
+            text: 'Бицепс'
+        MyTextFieldRect:
+            id: biceps
+
+        MyLabel:
+            text: 'Грудь'
+        MyTextFieldRect:
+            id: grud
+
+        MyLabel:
+            text: 'Талия'
+        MyTextFieldRect:
+            id: talia
+
+        MyLabel:
+            text: 'Бедра'
+        MyTextFieldRect:
+            id: bedra
+
+    MDFlatButton:
+        text: 'Cохранить'
+        on_press: app.on_save()
+
+    MyLabel:
+        padding: 10
+        id: rezultat
+        font_size: self.height * 0.04
+        bold: False
+        text: app.calculate(rost.text, golova.text, sheya.text, plechi.text, biceps.text, grud.text, talia.text, bedra.text)
